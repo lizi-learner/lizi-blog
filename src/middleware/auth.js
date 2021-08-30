@@ -21,8 +21,7 @@ const verifyUser = async (ctx, next) => {
     const error = new Error(errorTypes.LOGIN_ERROR);
     return ctx.app.emit('error', error, ctx);
   }
-  //将查询到的用户信息保存，以供生成token
-  // ctx.req.id = result[0].id
+  //将查询到的用户信息保存
   ctx.adminData = result[0]
 
   await next();
