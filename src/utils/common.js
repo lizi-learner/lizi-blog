@@ -14,7 +14,7 @@ function clone(obj){
  * @param {需要验证的参数} checkArr 
  * @param {回调} cb 
  */
-function checkParams(params, checkArr, cb){
+function checkParams(params, checkArr){
   //验证参数有没有缺少，如果缺少则返回错误信息
   let flag = true;
   checkArr.forEach(v => {
@@ -22,11 +22,7 @@ function checkParams(params, checkArr, cb){
       flag = false;
     }
   });
-  if(flag){
-    cb(null);
-  }else{
-    cb(constant.LACK)
-  }
+  return flag
 }
 
 /**
