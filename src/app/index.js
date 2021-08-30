@@ -6,11 +6,14 @@ const bodyParser = require('koa-bodyparser')
 const useRoutes = require('../router')
 
 const errorHandler = require('./error-handler')
+const verifyToken = require('../middleware/verify')
 
 const app = new Koa();
 
 //批量注册路由
 app.useRoutes = useRoutes;
+
+app.use(verifyToken)
 
 app.use(bodyParser());
 app.useRoutes();
