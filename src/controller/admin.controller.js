@@ -1,8 +1,7 @@
 class AdminController {
     //得到管理员列表
     async list(ctx, next){
-      console.log('你好，我是List')
-      ctx.body = '你好，我是List';
+
     }
     //得到管理员信息
     async info(ctx, next){

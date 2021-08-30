@@ -2,8 +2,7 @@
 class ArticleController {
     //获得文章列表
     async list(ctx, next){
-      console.log('你好，我是List')
-      ctx.body = '你好，我是List';
+      
     }
     //获得单条分文章
     async info(ctx, next){

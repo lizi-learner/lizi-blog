@@ -2,7 +2,7 @@
 const Router = require('koa-router');
 const { list, info, add, update, remove } = require('../controller/admin.controller')
 
-const adminRouter = new Router();
+const adminRouter = new Router({prefix: '/admin'});
 
 adminRouter.get('/', list);
 adminRouter.get('/:id', info);
