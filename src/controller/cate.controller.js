@@ -27,7 +27,7 @@ class CateController {
       msg: "获取分类数据成功",
       data: {
         list, 
-        count: list.length,
+        count: ctx.count,
       }
     };
   }
@@ -72,7 +72,10 @@ class CateController {
       return ctx.app.emit('error', error, ctx);
     }
     
-    ctx.body = `添加分类 ${name} 成功`;
+    ctx.body = {
+      code: 200,
+      msg: `添加分类 ${name} 成功`
+    };
   }
 
   //修改分类
@@ -95,7 +98,10 @@ class CateController {
       return ctx.app.emit('error', error, ctx);
     }
 
-    ctx.body = '修改成功'
+    ctx.body = {
+      code: 200,
+      msg: '修改成功'
+    }
   }
 
   //删除分类
@@ -114,7 +120,10 @@ class CateController {
       return ctx.app.emit('error', error, ctx);
     }
 
-    ctx.body = '删除成功'
+    ctx.body = {
+      code: 200,
+      msg: '删除成功'
+    }
   }
 
 }

@@ -19,7 +19,7 @@ const obj = {
     msg: "用户名或密码错误"
   },
   [errorTypes.TOKEN_ERROR]: {
-    code: 400,
+    code: 401,
     msg: "Token验证失败"
   }
 }

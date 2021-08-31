@@ -20,14 +20,14 @@ class AuthController {
 
     //将token添加到响应中
     ctx.body = {
-      status: 200,
-      message: '登录成功',
+      code: 200,
+      msg: '登录成功',
       data: {
         id: adminId,
         username: data.username,
         name: data.name,
         role: data.role,
-        LastLoginAt: dataFormat(data.LastLoginAt, 'yyyy-mm-dd HH:MM:ss'), //数据库里返回的时间是date类型
+        lastLoginAt: dataFormat(data.LastLoginAt, 'yyyy-mm-dd HH:MM:ss'), //数据库里返回的时间是date类型
         createdAt: dataFormat(data.createAt, 'yyyy-mm-dd HH:MM:ss'), 
         token,
       }

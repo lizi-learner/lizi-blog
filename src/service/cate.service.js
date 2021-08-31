@@ -2,6 +2,13 @@
 const connection = require('../app/database');
 
 class CateService {
+  async queryCount(){
+    const statement = `SELECT COUNT(*) FROM cate`;
+    const result = await connection.execute(statement);
+   
+    return result[0][0]['COUNT(*)']
+  }
+
   async queryCateDroplist(){
     const statement = `SELECT * FROM cate`;
     const result = await connection.execute(statement);
@@ -10,14 +17,14 @@ class CateService {
 
   async queryCate(query){
     //根据前端提交的参数计算SQL语句中需要的offset,即从多少条开始查询
-    let offset = (query.page - 1) * query.rows || 0 + '';
+    let offset = (+query.page - 1) * query.rows || 0 + '';
     //计算需要查询多少条
     let limit = +query.rows || 20 + '';
     const statement = `SELECT * FROM cate WHERE name = ? || ? LIMIT ?, ?;`;
     // let condition = query.name ? query.name : '1 || 1';
-    // console.log(condition)
     let condition = query.name ? [query.name, 0] : [1, 1];
-    const result = await connection.execute(statement, [...condition, offset, (offset + limit)])
+
+    const result = await connection.execute(statement, [...condition, offset + '', limit + ''])
 
     return result[0];
   }

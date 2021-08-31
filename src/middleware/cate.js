@@ -33,6 +33,7 @@ const queryCate = async function(ctx, next){
       //分页查询
       result = await service.queryCate(query);
     }
+    ctx.count = await service.queryCount();
   } catch(e){
     const error = new Error(errorTypes.DEFAULT_ERROR);
     console.log('3 数据库错误')

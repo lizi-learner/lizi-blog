@@ -5,14 +5,16 @@ async function verifyToken(ctx, next){
   // 如果请求路径是登录页则跳过
   if(ctx.path !== '/login') {
 
-    let token = ctx.request.header.authorization;
-    
+    let token = ctx.request.header.authorization || ctx.request.header.token;
+    // let token = ctx.request.header.authorization;
+
     if(!token) {
       const error = new Error(errorTypes.TOKEN_ERROR);
       return ctx.app.emit('error', error, ctx);
     }
-
+ 
     let tokenVerifyObj = Token.decrypt(token.replace('Bearer ', ''));
+    // let tokenVerifyObj = Token.decrypt(token);
     if(!tokenVerifyObj.token){
       const error = new Error(errorTypes.TOKEN_ERROR);
       return ctx.app.emit('error', error, ctx);
